@@ -19,7 +19,7 @@
 
                 @if(Auth::user()->hasRole('admin'))
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.suratmasuk')" :active="request()->routeIs('dashboard.suratmasuk')">
+                    <x-nav-link :href="route('dashboard.suratmasukadmin')" :active="request()->routeIs('dashboard.suratmasukadmin')">
                         {{ __('Surat Masuk') }}
                     </x-nav-link>
                 </div>
@@ -37,6 +37,14 @@
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard.pilihsurat')" :active="request()->routeIs('dashboard.pilihsurat')">
                         {{ __('Pilih Surat') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
+                @if(Auth::user()->hasRole('mahasiswa'))
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.suratmasukmhs')" :active="request()->routeIs('dashboard.suratmasukmhs')">
+                        {{ __('Surat Masuk') }}
                     </x-nav-link>
                 </div>
                 @endif

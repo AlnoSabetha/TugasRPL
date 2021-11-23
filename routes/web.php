@@ -24,15 +24,19 @@ Route::group(['middleware' => ['auth']], function() {
 
 // for admin
 Route::group(['middleware' => ['auth', 'role:admin']], function() {
-    Route::get('/dashboard/suratmasuk', 'App\Http\Controllers\SuratController@smAdmin')->name('dashboard.suratmasuk');
+    Route::get('/dashboard/suratmasukadmin', 'App\Http\Controllers\SuratController@smAdmin')->name('dashboard.suratmasukadmin');
 });
 
 // for mahasiswa
 Route::group(['middleware' => ['auth', 'role:mahasiswa']], function() {
     Route::get('/dashboard/buatsurat', 'App\Http\Controllers\SuratController@stMhs')->name('dashboard.buatsurat');
      Route::post('/dashboard/simpansurat', 'App\Http\Controllers\SuratController@simpan');
+     Route::get('/dashboard/editsurat/{id}', 'App\Http\Controllers\SuratController@edit');
+     Route::put('/dashboard/updatesurat/{id}', 'App\Http\Controllers\SuratController@updated');
+     Route::get('/dashboard/suratmasukmhs', 'App\Http\Controllers\SuratController@smMhs')->name('dashboard.suratmasukmhs');
      Route::get('/dashboard/suratkeluar', 'App\Http\Controllers\SuratController@skMhs')->name('dashboard.suratkeluar');
      Route::get('/dashboard/pilihsurat', 'App\Http\Controllers\SuratController@pilihsrt')->name('dashboard.pilihsurat');
+     Route::get('/dashboard/viewsurat/{id}', 'App\Http\Controllers\SuratController@svMhs');
 });
 
 require __DIR__.'/auth.php';
